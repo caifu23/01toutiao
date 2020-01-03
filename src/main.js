@@ -4,6 +4,11 @@ import App from './App.vue'
 import '@/styles/reset.css'
 // 引入路由模块
 import router from './router/index.js'
+// 引入vant中的按钮组件 \轻提示
+import { Button, Toast } from 'vant';
+
+Vue.use(Button)
+    .use(Toast)
 
 Vue.config.productionTip = false
 
