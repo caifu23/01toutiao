@@ -8,15 +8,20 @@
           <span class="iconfont iconnew"></span>
         </div>
         <div class="inputs">
-          <input placeholder="请输入手机号" class="input" />
-          <input placeholder="密码" class="input" type="password" />
+          <!-- <input placeholder="请输入手机号" class="input" /> -->
+          <hminput placeholder="请输入用户名/手机号" 
+          v-model="users.username"
+          :rules="/^((\d{5,6})|(\d{11}))$/"
+          msg='输入的用户名/手机号不正确'></hminput>
+          <hminput placeholder="请输入密码" 
+          v-model="users.password"
+          :rules="/^\S{3,11}$/"
+          msg="请输入3-16的密码"></hminput>
         </div>
         <p class="tips">
           没有账号？
           <a href="#/register" class>去注册</a>
         </p>
-        <!-- <div class="button">登录按钮</div>
-         -->
          <!-- 使用按钮组件 -->
          <hmbutton @click="login">登录</hmbutton>
       </div>
@@ -26,14 +31,25 @@
 <script>
 // 引入按钮组件
 import hmbutton from '../components/hmbtn'
+// 引入input输入框组件
+import hminput from '../components/hminput'
+
 export default {
+  data () {
+    return {
+      users: {
+        username: '10086',
+        password: ''
+      }
+    }
+  },
   // 注册组件
   components: {
-    hmbutton
+    hmbutton,hminput
   },
   methods: {
     login() {
-      console.log(11111)
+      console.log(this.users)
     }
   }
 };
