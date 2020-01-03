@@ -15,14 +15,28 @@
           没有账号？
           <a href="#/register" class>去注册</a>
         </p>
-        <div class="button">登录按钮</div>
+        <!-- <div class="button">登录按钮</div>
+         -->
+         <!-- 使用按钮组件 -->
+         <hmbutton @click="login">登录</hmbutton>
       </div>
   </div>
 </template>
 
 <script>
 // 引入按钮组件
-export default {};
+import hmbutton from '../components/hmbtn'
+export default {
+  // 注册组件
+  components: {
+    hmbutton
+  },
+  methods: {
+    login() {
+      console.log(11111)
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>
