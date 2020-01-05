@@ -18,7 +18,8 @@ let router = new VueRouter({
         },
         {
             name: 'Personal',
-            path: '/personal',
+            // 动态参数id
+            path: '/personal/:id',
             component: Personal
         }
     ]
@@ -26,7 +27,7 @@ let router = new VueRouter({
 
 // 导航守卫
 router.beforeEach((to, from, next) => {
-    console.log(to)
+    // console.log(to)
     if(to.path.indexOf('/personal') === 0) {
         // 当前即将跳转 个人中心页
         // 验证是否登录

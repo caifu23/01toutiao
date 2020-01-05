@@ -71,7 +71,9 @@ export default {
           // 登录成功, 跳转主页
           // 跳转之前存储token
           localStorage.setItem('hmtoutiao_41_token', res.data.data.token)
-          this.$router.push({ name: "Personal" });
+          localStorage.setItem('hmtoutiao_user', JSON.stringify(res.data.data.user))
+          // this.$router.push({ name: "Personal" });
+          this.$router.push({path: `/personal/${res.data.data.user.id}`})
         }
       } else {
         // 用户名或密码不符合要求，给出提示
