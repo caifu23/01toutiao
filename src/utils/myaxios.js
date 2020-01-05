@@ -20,7 +20,7 @@ axios.interceptors.request.use(function (config) {
 // 添加响应拦截器
 axios.interceptors.response.use(function (response) {
     // 对响应数据做点什么 
-    if(response.data.statusCode === 401) {
+    if(response.data.statusCode === '用户信息验证失败' || response.data.message === '用户信息验证失败!') {
         // 用户信息验证失败
         // 重定向到登录页
         window.location.href = '#/login'

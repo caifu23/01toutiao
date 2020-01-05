@@ -5,10 +5,14 @@ import '@/styles/reset.css'
 // 引入路由模块
 import router from './router/index.js'
 // 引入vant中的按钮组件 \轻提示
-import { Button, Toast } from 'vant';
+import { Button, Toast, Uploader, Dialog, Field, Picker    } from 'vant';
 
 Vue.use(Button)
     .use(Toast)
+    .use(Uploader)
+    .use(Dialog )
+    .use(Field )
+    .use(Picker )
 
 Vue.config.productionTip = false
 

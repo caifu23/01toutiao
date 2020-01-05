@@ -1,6 +1,7 @@
 <template>
   <div class="personal">
-    <router-link to="/edit_profile">
+    <router-link :to="{path:`/edit_profile/${currentUser.id}`}">
+    <!-- <router-link :to="'/edit_profile/'+currentUser.id"> -->
       <div class="profile">
         <!-- $axios.defaults.baseURL读取axios的服务器路径 -->
         <img :src="'http://127.0.0.1:3000' + currentUser.head_img" alt />
@@ -35,6 +36,7 @@ import { getUserInfo } from "@/apis/user";
 export default {
   data() {
     return {
+      // 当前用户对象
       currentUser: {}
     };
   },
@@ -43,12 +45,18 @@ export default {
     hmbtn
   },
   async mounted() {
+    // 获取路由的参数id
     let id = this.$route.params.id;
     // console.log(id)
     let res = await getUserInfo(id);
-    console.log(res);
+    // console.log(res);
     if (res.data.message === "获取成功") {
+      // 将获取的到数据 给 当前用户
       this.currentUser = res.data.data;
+    }
+    if(!this.currentUser.head_img) {
+      // 当前数据没有图片地址，提供默认显示图片
+      this.currentUser.head_img = '/uploads/image/default.png'
     }
     // 用户验证失败由响应拦截器处理
   }

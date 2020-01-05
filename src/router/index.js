@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 // 引入
 import Login from '@/views/Login.vue'
 import Personal from '@/views/Personal.vue'
+import EditProfile from '../views/edit_profile'
 
 // 挂载
 Vue.use(VueRouter)
@@ -18,9 +19,14 @@ let router = new VueRouter({
         },
         {
             name: 'Personal',
-            // 动态参数id
+            // 动态参数id，  动态路径参数 以冒号开头
             path: '/personal/:id',
             component: Personal
+        },
+        {
+            name: 'EditProfile',
+            path: '/edit_profile/:id',
+            component: EditProfile
         }
     ]
 })
